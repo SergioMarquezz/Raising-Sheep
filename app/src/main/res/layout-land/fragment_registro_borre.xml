@@ -45,6 +45,7 @@
               android:hint="yyyy/mm/dd"
               android:textColor="@android:color/black"
               android:textSize="18dp"
+              android:background="@drawable/edit_text_ovalo_white"
               android:layout_marginTop="10dp"
               android:layout_marginLeft="20dp"
               android:textColorHint="@android:color/black"/>

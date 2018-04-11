@@ -44,8 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public RadioButton sesion;
 
     private boolean radio_activado;
-    private static final String iniciar_sesion_preference = "com.android.sergiomarquez.raisingsheep1";
-    private static final String estado_radio_preference = "estado.button.sesion";
+    //private static final String iniciar_sesion_preference = "com.android.sergiomarquez.raisingsheep1";
+    //private static final String estado_radio_preference = "estado.button.sesion";
     private static final String preferencias = "preferences";
 
 

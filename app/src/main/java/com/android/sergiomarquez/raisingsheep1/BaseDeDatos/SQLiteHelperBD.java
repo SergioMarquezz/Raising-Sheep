@@ -21,16 +21,36 @@ public class SQLiteHelperBD extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(BDManager.create_table_registro);
-        db.execSQL(BDManager.create_table_usuarios);
+      db.execSQL(BDManager.create_table_usuarios);
+      db.execSQL(BDManager.create_table_borregos);
+      db.execSQL(BDManager.create_table_etapas);
+      db.execSQL(BDManager.create_table_razas);
+
+      db.execSQL(BDManager.create_table_enfermedades);
+      db.execSQL(BDManager.create_table_salidas);
+      db.execSQL(BDManager.create_table_diversos_sin);
+      db.execSQL(BDManager.create_table_consultas);
+      db.execSQL(BDManager.create_table_diagnostico);
+      db.execSQL(BDManager.create_table_sitomas);
+      db.execSQL(BDManager.create_table_detalle_ds);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_registro);
         db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_usr);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_borregos);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_etapas);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_razas);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_enfermedades);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_sintomas);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_diversos_sin);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_detalle_diversos_sin);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_consultas);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_diagnostico);
+        db.execSQL("DROP TABLE IF EXISTS " +BDManager.name_table_salidas);
+
         onCreate(db);
     }
 }
