@@ -1,0 +1,121 @@
+<resources>
+    <string name="app_name">Raising Sheep</string>
+
+
+    <!-- Textos en la activity de login -->
+
+    <string name="acceso">Acceso a la aplicación</string>
+    <string name="permitido">Acceso permitido</string>
+    <string name="continuar">¿Desea continuar?</string>
+    <string name="aceso_denegado">Acceso denegado</string>
+    <string name="verificar_acceso">Verifique datos o registro</string>
+    <string name="login">Inicio de sesión</string>
+    <string name="prompt_name">Nombre</string>
+    <string name="prompt_password">Password</string>
+    <string name="entra">Ingresar</string>
+    <string name="recordar">Recordar usuario y contraseña</string>
+    <string name="registrar">Registrate aqui</string>
+    <string name="logeo">Logeando</string>
+    <string name="permisos">No acepto los permisos</string>
+
+
+    <!--  Textos para cuadros de dialogo -->
+
+    <string name="acepetar">Aceptar</string>
+    <string name="cancelar">Cancelar</string>
+
+
+    <!-- Textos en la activity de registro usuarios -->
+
+    <string name="imagen">Cargar imagen</string>
+    <!-- <string name="prompt_password">Password</string>-->
+    <string name="confirmar">Confirmar password</string>
+    <string name="registro_usr">Registrar</string>
+    <!--<string name="cancelar">Cancelar</string>-->
+    <string name="usr_registro">Registro de usuarios</string>
+    <string name="save">Guardar</string>
+    <string name="campos_requeridos">Llene los campos requeridos</string>
+    <string name="contraseña">Escriba una contraseña</string>
+    <string name="confirme_contraseña">Confirme su contraseña</string>
+    <string name="contraseñas_distintas">Las contraseñas son diferentes</string>
+    <string name="usr_registrado">Se a registrado en la aplicación</string>
+    <string name="usr_existe">El usuario ya existe</string>
+    <string name="opcion">Seleccione una opción</string>
+    <string name="select_app">Selecciona aplicación</string>
+    <string name="sin_imagen">Imagen no seleccionada</string>
+    <string name="carga_imagen">Cargando imagen</string>
+
+
+    <!-- Texto para fragment cambio de perfil -->
+
+    <string name="cambio_imagen">Cambiar imagen</string>
+    <string name="pasword_nuevo">Nuevo password</string>
+    <string name="pasword_actual">Password actual</string>
+    <string name="confirmar_new_paword">Confirmar nueva contraseña</string>
+    <string name="save_usr">Guardar</string>
+    <string name="new_image">Nueva imagen</string>
+    <string name="sin_image">Sin imagen</string>
+    <string name="cambio_image">Cambiando imagen</string>
+    <string name="perfil_update">Perfil modificado</string>
+    <string name="cierre_sesion">Se cerrara su sesión</string>
+    <!--<string name="continuar">¿Desea continuar?</string>-->
+    <string name="sin_cambio_image">No a cambiado de imagen</string>
+    <string name="write_name">Escriba un nombre</string>
+    <string name="write_pass_actual">Escriba su contraseña actual</string>
+    <string name="write_new_pass">Escriba su nueva contraseña</string>
+    <string name="select_photo">Seleccione una foto</string>
+    <string name="incorrecto_pass">Su contraseña actual es incorrecta</string>
+    <string name="incorrecta_contraseña">Su nueva contraseña no coincide</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="bienvenida">Bienvenido a la aplicación</string>
+    <string name="registrours">Registrate</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_administracion_borre">Raising Sheep</string>
+    <string name="tab_text_1">Registrar</string>
+    <string name="tab_text_2">Editar</string>
+    <string name="tab_text_3">Baja</string>
+    <string name="tab_text_4">Buscar</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+
+    <string name="registro">Registro de borregos</string>
+    <string name="edicion">Modificacion de datos</string>
+    <string name="baja">Baja de borregos</string>
+    <string name="consulta">Consulta de datos</string>
+    <string name="id">Clave</string>
+    <string name="date">Fecha:</string>
+    <string name="etapa">Etapa</string>
+    <string name="sexo">Sexo</string>
+    <string name="peso">Peso</string>
+    <string name="desc">Descripción</string>
+    <string name="raza">Raza</string>
+
+    <string name="sintomas">Sintomas</string>
+    <string name="carga">Cargando app</string>
+    <string name="cerrar">Cerrar sesión</string>
+    <string name="perfil">Usuario</string>
+    <string name="acerca">Acerca de Rasing Sheep</string>
+    <string name="cambio_perfil">Editar perfil</string>
+    <string name="toolbar_perfil">Cambio de perfil</string>
+
+
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>

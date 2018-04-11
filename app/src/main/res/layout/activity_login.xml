@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.android.sergiomarquez.raisingsheep1.LoginActivity">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="225dp"
+        android:orientation="vertical"
+        android:layout_gravity="center"
+        android:background="@drawable/backgroud">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageViewLogin"
+            android:layout_width="125dp"
+            android:layout_height="125dp"
+            android:layout_gravity="center"
+            android:src="@drawable/usuario"
+            android:layout_marginTop="30dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login"
+            android:layout_marginLeft="115dp"
+            android:layout_marginTop="20dp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+   <android.support.design.widget.TextInputLayout
+       android:id="@+id/textInputLayoutName"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:textColorHint="@color/colorWhite">
+        <EditText
+            android:drawableStart="@drawable/ic_person_black_24dp"
+            android:drawableLeft="@drawable/ic_person_black_24dp"
+            android:id="@+id/AutoCompleteName"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:background="@drawable/edit_text_ovalo"
+            android:layout_width="300dp"
+            android:textColor="@color/colorWhite"
+            android:padding="10dp"
+            android:maxLength="20"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_name"
+            android:inputType="textCapWords"/>
+
+   </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textInputLayoutPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/colorWhite"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/colorWhite"
+        android:layout_marginTop="10dp">
+        <EditText
+            android:drawableStart="@drawable/ic_lock_black_24dp"
+            android:drawableLeft="@drawable/ic_lock_black_24dp"
+            android:id="@+id/editTextPasswordLogin"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/colorWhite"
+            android:background="@drawable/edit_text_ovalo"
+            android:layout_width="300dp"
+            android:padding="10dp"
+            android:maxLength="10"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_password"
+            android:inputType="textPassword" />
+
+    </android.support.design.widget.TextInputLayout>
+
+
+        <Button
+            android:id="@+id/buttonEntrar"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:padding="10dp"
+            android:gravity="center"
+            android:textSize="18dp"
+            android:layout_marginTop="20dp"
+            android:textAllCaps="false"
+            android:layout_marginLeft="28dp"
+            android:text="@string/entra"
+            android:background="@drawable/backgroud"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioButtonRecordar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/recordar"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textViewRegistrar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registrar"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="63dp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+
+    </LinearLayout>
+
+
+</ScrollView>

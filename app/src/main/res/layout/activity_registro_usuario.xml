@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.android.sergiomarquez.raisingsheep1.RegistroUsuarioActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/backgroud">
+
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageViewFoto"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="110dp"
+                android:src="@drawable/camara"/>
+
+            <TextView
+                android:id="@+id/textViewFoto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/imagen"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextName"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:maxLength="20"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_name"
+                    android:inputType="textCapWords" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextPasswordRegistro"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:maxLength="10"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_password"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextPasswordConfirmar"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:maxLength="10"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirmar"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
+
+            <Button
+                android:id="@+id/buttonRegistrar"
+                android:layout_width="20dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_weight="1"
+                android:textAllCaps="false"
+                android:textSize="18dp"
+                android:layout_marginLeft="45dp"
+                android:background="@drawable/backgroud"
+                android:text="@string/registro_usr" />
+
+            <Button
+                android:id="@+id/buttonCancelar"
+                android:layout_width="20dp"
+                android:textAllCaps="false"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:textSize="18dp"
+                android:layout_weight="1"
+                android:text="@string/cancelar"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="45dp"
+                android:background="@drawable/backgroud"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</ScrollView>

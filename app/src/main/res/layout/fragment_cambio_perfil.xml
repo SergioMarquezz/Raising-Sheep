@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragmentPefil"
+    tools:context=".CambioPerfilFragment">
+
+  <ScrollView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="vertical"
+            android:layout_gravity="center"
+            android:background="@drawable/backgroud">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/imageViewImagen"
+                android:layout_width="110dp"
+                android:layout_height="110dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="125dp"
+                android:src="@drawable/camara"/>
+
+            <TextView
+                android:id="@+id/textViewImagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cambio_imagen"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextNameActual"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:maxLength="20"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/prompt_name"
+                    android:inputType="textCapWords" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextPasswordActual"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:maxLength="10"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pasword_actual"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextPasswordNuevo"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:maxLength="10"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/pasword_nuevo"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/colorWhite"
+                android:textColorHint="@color/colorWhite"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:id="@+id/editTextPasswordConfirmarNuevo"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="18dp"
+                    android:maxLength="10"
+                    android:background="@drawable/edit_text_ovalo"
+                    android:layout_width="300dp"
+                    android:padding="10dp"
+                    android:layout_marginTop="25dp"
+                    android:layout_gravity="center"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/confirmar_new_paword"
+                    android:inputType="textPassword" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp">
+
+
+            <Button
+                android:id="@+id/buttonGuardar"
+                android:layout_width="300dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:textAllCaps="false"
+                android:layout_weight="1"
+                android:textSize="18dp"
+                android:layout_marginLeft="30dp"
+                android:text="@string/save_usr"
+                android:background="@drawable/backgroud" />
+
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+  </ScrollView>
+
+</FrameLayout>

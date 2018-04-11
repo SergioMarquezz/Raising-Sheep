@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="subirImagen">
+        <item>Abrir galeria</item>
+        <item>Tomar foto</item>
+        <item>Borrar imagen</item>
+    </string-array>
+
+    <string-array name="itemIds">
+        <item>open gallery</item>
+        <item>capture photo</item>
+        <item>remove image</item>
+
+    </string-array>
+</resources>
