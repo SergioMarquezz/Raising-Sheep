@@ -23,6 +23,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.sergiomarquez.raisingsheep1.BaseDeDatos.BDManager;
+
 public class AdministracionBorreActivity extends AppCompatActivity {
 
 
@@ -87,8 +89,6 @@ public class AdministracionBorreActivity extends AppCompatActivity {
     }
 
     public void inicio(){
-
-
 
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -202,6 +202,7 @@ public class AdministracionBorreActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
 
                                 item_añadir.setVisible(true);
+                                RegistroBorreFragment.registrarBorregos();
                                 Toast.makeText(getApplicationContext(),"Datos Guardados",Toast.LENGTH_LONG).show();
                                 RegistroBorreFragment.bloqueo();
                                 item_guardar.setEnabled(false);

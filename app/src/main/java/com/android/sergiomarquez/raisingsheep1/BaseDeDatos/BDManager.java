@@ -56,9 +56,7 @@ public class BDManager {
     public static final String column_raza_idf = "id_raza";
     public static final String column_etapa_idf = "id_etapa";
     public static final String column_salida_idf = "id_salida";
-
-
-    //public static final String column_peso = "peso";
+    public static final String column_peso = "peso";
 
 
     //COLUMNAS PARA LA TABLA DE CONSULTAS
@@ -153,11 +151,12 @@ public class BDManager {
             +column_id_borrego + " integer primary key autoincrement,"
             +column_nombre_borre + " varchar(20) not null,"
             +column_sexo + " varchar(8) not null,"
-            +column_fecha + " date not null,"
+            +column_peso + " double (10) not null,"
+            +column_fecha + " varchar not null,"
             +column_descripcion + " text not null,"
-            +column_raza_idf + " integer, "
-            +column_etapa_idf + " integer, "
-            +column_salida_idf + " integer, "
+            +column_raza_idf + " integer not null, "
+            +column_etapa_idf + " integer not null, "
+            +column_salida_idf + " integer not null, "
             +"foreign key (" + column_raza_idf +") references " + name_table_razas + "(id_raza),"
             +"foreign key (" + column_etapa_idf +") references " + name_table_etapas + "(id_etapa),"
             +"foreign key (" + column_salida_idf +") references " + name_table_salidas + "(id_salida)" +")";
@@ -230,7 +229,7 @@ public class BDManager {
 
 
     //Metodo en donde se almacenan los datos del usuario
-    private ContentValues generarValores(String nombre, String password, byte[] image) {
+    private ContentValues generarUsuarios(String nombre, String password, byte[] image) {
 
         ContentValues usuarios = new ContentValues();
 
@@ -242,17 +241,38 @@ public class BDManager {
 
     }
 
+    private ContentValues generarBorregos(String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa,int salida){
+
+        ContentValues borregos = new ContentValues();
+
+        borregos.put(column_fecha,fecha);
+        borregos.put(column_nombre_borre,nombre);
+        borregos.put(column_sexo,sexo);
+        borregos.put(column_peso,peso);
+        borregos.put(column_descripcion,descrip);
+        borregos.put(column_raza_idf,raza);
+        borregos.put(column_etapa_idf,etapa);
+        borregos.put(column_salida_idf,salida);
+
+        return borregos;
+    }
+
     //Metodo para insertar a los usuarios
     public void insertarUsuarios(String nombre, String password, byte[] image) {
 
-        base_datos.insert(name_table_usr, null, generarValores(nombre, password,image));
+        base_datos.insert(name_table_usr, null, generarUsuarios(nombre, password,image));
 
+    }
+
+    public void insertarBorregos(String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa, int salida ){
+
+        base_datos.insert(name_table_borregos,null,generarBorregos(fecha,nombre,sexo,peso,descrip,raza,etapa,salida));
     }
 
     //Metodo para editar a los usuarios
     public void editarPerfil(String nombre,String password, byte[] foto, String usuario){
 
-        base_datos.update(name_table_usr,generarValores(nombre,password,foto),column_nombre + "=?",new String[]{usuario});
+        base_datos.update(name_table_usr,generarUsuarios(nombre,password,foto),column_nombre + "=?",new String[]{usuario});
     }
 
     //Metodo para buscar a un usuario registrado
@@ -291,4 +311,33 @@ public class BDManager {
 
         return cursor;
     }
+
+    public Cursor selectRazas(){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select *from razas ",null);
+
+        return cursor;
+    }
+
+    public Cursor selectEtapas(){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select *from etapas ",null);
+
+        return cursor;
+    }
+
+    public Cursor selectSalidas(){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select *from salidas ",null);
+
+        return cursor;
+    }
+
+
 }

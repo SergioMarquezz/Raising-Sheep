@@ -94,6 +94,7 @@
     <string name="peso">Peso</string>
     <string name="desc">Descripción</string>
     <string name="raza">Raza</string>
+    <string name="activo">Estatus</string>
 
     <string name="sintomas">Sintomas</string>
     <string name="carga">Cargando app</string>

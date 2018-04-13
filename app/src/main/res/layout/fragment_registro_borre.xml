@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginTop="25dp">
+            android:layout_marginTop="10dp">
 
             <LinearLayout
                 android:layout_width="109dp"
@@ -116,6 +116,16 @@
                     android:textSize="18dp"
                     android:layout_marginTop="30dp"/>
 
+                <TextView
+                    android:id="@+id/textView15"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/activo"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                    android:layout_marginTop="30dp"/>
+
             </LinearLayout>
 
 
@@ -130,25 +140,25 @@
                             android:layout_width="wrap_content"
                             android:layout_height="35dp"
                             android:ems="10"
-                            android:layout_marginTop="5dp"
+                            android:layout_marginTop="6dp"
                             android:background="@drawable/edit_text_ovalo_white"
                             android:inputType="textCapWords" />
 
                         <Spinner
                             android:id="@+id/spinnerSexo"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp" />
 
                         <Spinner
                             android:id="@+id/spinnerRaza"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="25dp" />
 
                         <Spinner
                             android:id="@+id/spinnerEtapa"
-                            android:layout_width="wrap_content"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="30dp"/>
 
@@ -160,6 +170,12 @@
                             android:background="@drawable/edit_text_ovalo_white"
                             android:ems="10"
                             android:inputType="numberDecimal" />
+
+                        <Spinner
+                            android:id="@+id/spinnerEstatus"
+                            android:layout_width="200dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp"/>
 
 
 
@@ -176,8 +192,8 @@
             android:textColor="@android:color/black"
             android:textStyle="bold"
             android:textSize="18dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"/>
+            android:layout_marginLeft="135dp"
+            android:layout_marginTop="10dp"/>
 
         <ScrollView
             android:layout_width="match_parent"
@@ -187,7 +203,6 @@
                 android:id="@+id/editTextDescri"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_marginTop="10dp"
                 android:background="@drawable/edit_text_ovalo_white"
                 android:ems="10"/>
 

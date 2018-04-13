@@ -1,39 +1,45 @@
 package com.android.sergiomarquez.raisingsheep1;
 
 
-import android.annotation.SuppressLint;
-import android.app.*;
-import android.content.Context;
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.app.Dialog;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.android.sergiomarquez.raisingsheep1.BaseDeDatos.BDManager;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 
 
-public class RegistroBorreFragment extends Fragment implements View.OnClickListener{
+public class RegistroBorreFragment extends Fragment implements View.OnClickListener,
+        AdapterView.OnItemSelectedListener{
 
-    View vista;
-    static TextView date;
-    static EditText nombre;
-    static EditText peso;
-    static EditText descripcion;
-    static Spinner etapa,raza,sexo;
-    com.android.sergiomarquez.raisingsheep1.Dialog dialogos;
+    //VARIABLES GLOBALES
+
+    private View vista;
+    private static TextView date;
+    private static EditText nombre;
+    private static EditText peso;
+    private static EditText descripcion;
+    private static Spinner etapa,raza,sexo,salida;
+    private Cursor cursor;
+
+
+    private com.android.sergiomarquez.raisingsheep1.Dialog dialogos;
+    private static BDManager bd_manager;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,6 +58,10 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
     }
 
 
+    /*EN ESTE METODO SE HACE VINCULACION HACIA CADA WIDGET DE LA INTERFACE (Layout)
+      CON SUS RESPECTIVO id DE CADA UNO Y SE LLAMA A LOS METODOS DE CLICKEOS PARA QUE
+      SEAN ESCUCHADOS POR LOS WIDGETS CORRESPONDIENTES
+     */
 
     public void inicializacion(){
 
@@ -61,6 +71,12 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         etapa = (Spinner) vista.findViewById(R.id.spinnerEtapa);
         raza = (Spinner) vista.findViewById(R.id.spinnerRaza);
         sexo = (Spinner) vista.findViewById(R.id.spinnerSexo);
+        salida = (Spinner) vista.findViewById(R.id.spinnerEstatus);
+
+        raza.setOnItemSelectedListener(this);
+        etapa.setOnItemSelectedListener(this);
+        sexo.setOnItemSelectedListener(this);
+        salida.setOnItemSelectedListener(this);
 
         nombre = (EditText) vista.findViewById(R.id.editTextName);
         descripcion = (EditText) vista.findViewById(R.id.editTextDescri);
@@ -68,10 +84,13 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         descripcion.setOnClickListener(this);
 
         dialogos = new com.android.sergiomarquez.raisingsheep1.Dialog(getContext());
+        bd_manager = new BDManager(getContext());
 
         descripcion.setFocusable(false);
 
     }
+
+    //METODO PARA BLOQUEAR AL INICIO DE LA ACTIVITY TODOS LOS WIDGETS
 
     public static void bloqueo(){
 
@@ -82,9 +101,12 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         etapa.setEnabled(false);
         raza.setEnabled(false);
         sexo.setEnabled(false);
+        salida.setEnabled(false);
 
 
     }
+
+    //METODO PARA DESBLOQUEAR TODOS LOS WIDGETS
 
     public static void desbloqueo(){
 
@@ -95,47 +117,93 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         etapa.setEnabled(true);
         raza.setEnabled(true);
         sexo.setEnabled(true);
+        salida.setEnabled(true);
 
 
     }
+
+    //METODO CON EL CUAL SE LLENA LOS SPINNERS AL INICIAR LA ACTIVITY
 
     public void spinners(){
 
-        List lista_etapa = new ArrayList();
-        List lista_raza = new ArrayList();
-        List sexos = new ArrayList();
+    ArrayList<String> lista_raza = new ArrayList<String>();
+    ArrayList<String> lista_etapa = new ArrayList<String>();
+    ArrayList<String> lista_sexo = new ArrayList<String>();
+    ArrayList<String> lista_salida = new ArrayList<String>();
 
-        lista_etapa.add("Cordero");
-        lista_etapa.add("Semental");
-        lista_etapa.add("Cargada");
-        lista_etapa.add("Cuarentena");
+        lista_raza.add("Seleccione");
+        lista_etapa.add("Seleccione");
+        lista_sexo.add("Seleccione");
+        lista_salida.add("Seleccione");
+        lista_sexo.add("Hembra");
+        lista_sexo.add("Macho");
 
+        cursor = bd_manager.selectRazas();
 
-        lista_raza.add("Dorset");
-        lista_raza.add("Dorper");
-        lista_raza.add("Pelibuey");
-        lista_raza.add("Hampshire");
-        lista_raza.add("Suffolk");
+        while (cursor.moveToNext()){
 
-        sexos.add("Macho");
-        sexos.add("Hembra");
+            String raza_borre = cursor.getString(cursor.getColumnIndex("tipo_raza"));
+            lista_raza.add(raza_borre);
 
+            ArrayAdapter adapter_raza = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_raza);
+            adapter_raza.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            raza.setAdapter(adapter_raza);
+        }
 
+        cursor = bd_manager.selectEtapas();
 
-        ArrayAdapter adapter_etapa = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_etapa);
-        adapter_etapa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        etapa.setAdapter(adapter_etapa);
+        while (cursor.moveToNext()){
 
+            String etapa_borre = cursor.getString(cursor.getColumnIndex("tipo_etapa"));
+            lista_etapa.add(etapa_borre);
 
-        ArrayAdapter adapter_raza = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_raza);
-        adapter_raza.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        raza.setAdapter(adapter_raza);
+            ArrayAdapter adapter_etapa = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_etapa);
+            adapter_etapa.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            etapa.setAdapter(adapter_etapa);
+        }
 
-        ArrayAdapter adapter_sexo = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,sexos);
-        adapter_sexo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sexo.setAdapter(adapter_sexo);
+        cursor = bd_manager.selectSalidas();
+
+        while (cursor.moveToNext()){
+
+            String salidas = cursor.getString(cursor.getColumnIndex("tipo_salida"));
+            lista_salida.add(salidas);
+
+            ArrayAdapter adapter_salida = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_salida);
+            adapter_salida.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            salida.setAdapter(adapter_salida);
+        }
+
+            ArrayAdapter adapter_sexo = new ArrayAdapter(getActivity(),R.layout.spinner_item_diseno,lista_sexo);
+            adapter_sexo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            sexo.setAdapter(adapter_sexo);
+
 
     }
+
+    public static void registrarBorregos(){
+
+        bd_manager.abrirBaseDatos();
+
+        String fecha = String.valueOf(date.getText()).trim();
+        String nombre_borre = String.valueOf(nombre.getText()).trim();
+        String descrip = String.valueOf(descripcion.getText()).trim();
+        double pesaje = Double.parseDouble(String.valueOf(peso.getText().toString()).trim());
+        int etapas = Integer.parseInt(String.valueOf(etapa.getSelectedItemPosition()));
+        int razas = Integer.parseInt(String.valueOf(raza.getSelectedItemPosition()));
+        int salidas = Integer.parseInt(String.valueOf(salida.getSelectedItemPosition()));
+        String sex = String.valueOf(sexo.getSelectedItem().toString());
+
+
+        bd_manager.insertarBorregos(fecha,nombre_borre,sex,pesaje,descrip,razas,etapas,salidas);
+
+        bd_manager.cerrarBaseDatos();
+    }
+
+    /*
+    METODO QUE LLAMA A UN AlertDialog AL MOMENTO DE DAR CLIC
+    EN UN TextView PARA PODER ESCRIBIR EN UN EditText
+     */
 
     public void dialogoEditText(){
 
@@ -177,11 +245,11 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
     public void onClick(View v) {
 
         if (v.getId() == R.id.textViewtDate){
-            obtenerFecha();
+            obtenerFecha(); //SE LLAMA AL METODO PARA GENERAR EL DatePikerDialog
         }
 
         else if (v.getId() == R.id.editTextDescri){
-            dialogoEditText();
+            dialogoEditText(); //SE LLAMA AL METODO PARA GENERAR EL AlertDialog CON UN EditText
 
 
         }
@@ -189,6 +257,11 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
     }
 
 
+    /*
+    METODO QUE GENERA UN DatePickerDialog PARA COLOCAR LA FECHA EN UN
+    TextView ESTE METODO SE EJECUTA AL MOMENTO DE DAR CLIC EN EL TextView
+    DE LA FECHA
+     */
     public void obtenerFecha(){
 
         final Calendar calendario = Calendar.getInstance();
@@ -209,6 +282,16 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         }, yy, mm, dd);
 
         datePicker.show();
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
 
     }
 }
