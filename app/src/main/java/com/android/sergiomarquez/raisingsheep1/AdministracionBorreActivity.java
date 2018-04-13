@@ -295,7 +295,7 @@ public class AdministracionBorreActivity extends AppCompatActivity {
             super(fm);
         }
 
-        String[] name_tabs = {"Registrar","Editar","Baja","Buscar"};
+        String[] name_tabs = {"Registrar","Editar","Baja","Consulta"};
 
         @Override
         public Fragment getItem(int position) {

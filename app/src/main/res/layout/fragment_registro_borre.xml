@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.android.sergiomarquez.raisingsheep1.RegistroBorreFragment"
-    android:background="@drawable/fondo_gris">
+    android:background="@drawable/backgroud">
 
 
 <ScrollView
@@ -46,7 +46,6 @@
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="10dp"
                 android:textColor="@android:color/black"
-                android:background="@drawable/edit_text_ovalo_white"
                 android:textSize="18dp"
                 android:textColorHint="@android:color/black"/>
 
@@ -140,8 +139,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="35dp"
                             android:ems="10"
-                            android:layout_marginTop="6dp"
                             android:background="@drawable/edit_text_ovalo_white"
+                            android:layout_marginTop="6dp"
                             android:inputType="textCapWords" />
 
                         <Spinner
@@ -202,7 +201,7 @@
             <EditText
                 android:id="@+id/editTextDescri"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="37dp"
                 android:background="@drawable/edit_text_ovalo_white"
                 android:ems="10"/>
 

@@ -2,26 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo_gris"
+    android:background="@drawable/backgroud"
     tools:context="com.android.sergiomarquez.raisingsheep1.ConsultaBorreFragment">
 
 
 
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginLeft="23dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="56dp"
-            android:text="@string/consulta"
-            android:textColor="@android:color/black"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
+                <ListView
+                    android:id="@+id/listViewBorregos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
 </FrameLayout>

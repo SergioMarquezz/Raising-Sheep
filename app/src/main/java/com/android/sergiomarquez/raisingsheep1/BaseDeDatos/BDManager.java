@@ -339,5 +339,14 @@ public class BDManager {
         return cursor;
     }
 
+    public Cursor selectTodosBorregos(){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select *from borregos",null);
+
+        return cursor;
+    }
+
 
 }

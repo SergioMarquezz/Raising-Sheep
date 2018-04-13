@@ -79,7 +79,7 @@
     <string name="tab_text_1">Registrar</string>
     <string name="tab_text_2">Editar</string>
     <string name="tab_text_3">Baja</string>
-    <string name="tab_text_4">Buscar</string>
+    <string name="tab_text_4">Consulta</string>
     <string name="section_format">Hello World from section: %1$d</string>
 
 
