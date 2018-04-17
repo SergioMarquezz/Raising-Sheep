@@ -38,7 +38,7 @@ public class PrincipalActivity extends AppCompatActivity
     private Cursor cursor_usuario;
     private TextView text_view_bienvenido;
     private View header;
-    private Toolbar toolbar;
+    public static Toolbar toolbar;
     private ImageView image_view_bienvenido;
 
 
@@ -62,6 +62,7 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
 
         iniciar();
         selectUsuario();
@@ -172,23 +173,25 @@ public class PrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.itemSintomas) {
 
-
+                toolbar.setTitle(R.string.app_name);
                 fragment = new SintomasFragment();
 
                 fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
 
 
+        } else if (id == R.id.itemEnfermedad) {
 
+                toolbar.setTitle(R.string.app_name);
+                fragment = new EnfermedadesFragment();
 
-
-        } else if (id == R.id.nav_slideshow) {
-
+                fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
+        /*
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
-
+            */
         } else if (id == R.id.itemCambioPefil){
 
             toolbar.setTitle(R.string.toolbar_perfil);

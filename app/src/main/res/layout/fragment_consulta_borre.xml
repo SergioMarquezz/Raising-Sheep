@@ -1,15 +1,301 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/backgroud"
     tools:context="com.android.sergiomarquez.raisingsheep1.ConsultaBorreFragment">
 
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        card_view:cardBackgroundColor="@color/colorGrey"
+        tools:layout_editor_absoluteX="0dp"
+        card_view:cardPreventCornerOverlap="true"
+        card_view:cardElevation="5dp"
+        card_view:cardCornerRadius="25dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        card_view:cardMaxElevation="5dp"
+        android:orientation="horizontal">
 
 
-                <ListView
-                    android:id="@+id/listViewBorregos"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="40dp">
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/datos"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:layout_marginTop="15dp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/num_borre"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/fecha_registro"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/marcaje"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/prompt_name"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/sexo"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/peso"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/raza"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/etapa"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/activo"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/desc"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="35dp">
+
+            <TextView
+                android:id="@+id/textViewNumBorre"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewMarcaje"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewSexo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewPeso"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewRaza"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewEtapa"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <TextView
+                android:id="@+id/textViewEstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="@string/informe"
+                android:textColor="@color/black"
+                android:textSize="14dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"/>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textViewDescrip"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:text="@string/informe"
+                    android:ems="10"
+                    android:textColor="@color/black"/>
+
+
+            </ScrollView>
+
+
+        </LinearLayout>
+
+
+    </android.support.v7.widget.CardView>
 
 </FrameLayout>

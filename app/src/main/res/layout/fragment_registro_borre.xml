@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:id="@+id/frameRegistro"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.android.sergiomarquez.raisingsheep1.RegistroBorreFragment"
@@ -23,6 +24,27 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/marcaje"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+            <EditText
+                android:id="@+id/editTextMarcaje"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:ems="4"
+                android:maxLength="6"
+                android:background="@drawable/edit_text_ovalo_white"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:inputType="textCapWords" />
 
             <TextView
                 android:id="@+id/textView11"
@@ -30,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/date"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="150dp"
+                android:layout_marginLeft="5dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:textSize="18dp"/>
@@ -201,7 +223,7 @@
             <EditText
                 android:id="@+id/editTextDescri"
                 android:layout_width="match_parent"
-                android:layout_height="37dp"
+                android:layout_height="match_parent"
                 android:background="@drawable/edit_text_ovalo_white"
                 android:ems="10"/>
 

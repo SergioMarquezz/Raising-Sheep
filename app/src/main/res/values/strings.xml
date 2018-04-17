@@ -94,7 +94,14 @@
     <string name="peso">Peso</string>
     <string name="desc">Descripción</string>
     <string name="raza">Raza</string>
+    <string name="marcaje">Marcaje</string>
     <string name="activo">Estatus</string>
+    <string name="marca">Marcaje del borrego</string>
+    <string name="fecha_res">Fecha de registro del borrego</string>
+    <string name="datos">Datos generales del borrego</string>
+    <string name="num_borre">Número de borrego</string>
+    <string name="fecha_registro">Fecha de registro</string>
+    <string name="informe">Sin datos</string>
 
     <string name="sintomas">Sintomas</string>
     <string name="carga">Cargando app</string>
@@ -103,6 +110,9 @@
     <string name="acerca">Acerca de Rasing Sheep</string>
     <string name="cambio_perfil">Editar perfil</string>
     <string name="toolbar_perfil">Cambio de perfil</string>
+    <string name="enfermedad">Enfermedades</string>
+    <string name="parasitoria">Enfermedades parasitorias</string>
+    <string name="infecciosa">Enfermedades infecciosas</string>
 
 
     <string name="action_sign_in">Sign in or register</string>

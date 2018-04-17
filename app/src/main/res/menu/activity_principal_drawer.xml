@@ -13,16 +13,16 @@
             android:icon="@drawable/ic_thermometer"
             android:title="Sintomas"/>
         <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
+            android:id="@+id/itemEnfermedad"
+            android:icon="@drawable/ic_enfermdades_ovinas"
+            android:title="Enfermedades" />
+      <!--  <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:title="Tools" /> -->
     </group>
 
-    <item android:title="Communicate">
+  <!--  <item android:title="Communicate">
         <menu>
             <item
                 android:id="@+id/nav_share"
@@ -33,7 +33,7 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
         </menu>
-    </item>
+    </item> -->
 
     <item android:title="@string/perfil">
         <menu>

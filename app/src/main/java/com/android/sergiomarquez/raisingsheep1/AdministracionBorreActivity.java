@@ -1,32 +1,32 @@
 package com.android.sergiomarquez.raisingsheep1;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.app.AlertDialog;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabItem;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.sergiomarquez.raisingsheep1.BaseDeDatos.BDManager;
 
-public class AdministracionBorreActivity extends AppCompatActivity {
-
+public class AdministracionBorreActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     private Toolbar toolbar;
     private TabLayout tabLayout;
@@ -34,8 +34,13 @@ public class AdministracionBorreActivity extends AppCompatActivity {
     private MenuItem item_edit;
     private MenuItem item_delete;
     private MenuItem item_añadir;
+    private MenuItem item_buscar;
     private AlertDialog.Builder builder;
     private Dialog dialog;
+    private BDManager bdManager;
+    private Cursor cursor;
+
+    private RegistroBorreFragment registro = new RegistroBorreFragment();
 
 
 
@@ -97,7 +102,12 @@ public class AdministracionBorreActivity extends AppCompatActivity {
             }
         });
 
+        bdManager = new BDManager(this);
+
     }
+
+
+
 
 
     public void fragments(){
@@ -110,39 +120,38 @@ public class AdministracionBorreActivity extends AppCompatActivity {
 
                     case 0:
 
-                        item_añadir.setEnabled(true);
-                        item_guardar.setEnabled(false);
-                        item_delete.setEnabled(false);
-                        item_edit.setEnabled(false);
+                        item_añadir.setVisible(true);
+                        item_guardar.setVisible(false);
+                        item_delete.setVisible(false);
+                        item_edit.setVisible(false);
+                        item_buscar.setVisible(false);
 
-                        if (item_añadir.isVisible() == false){
-
-                            RegistroBorreFragment.desbloqueo();
-                            item_guardar.setEnabled(true);
-                        }
 
                         break;
 
                     case 1:
-                        item_añadir.setEnabled(false);
-                        item_guardar.setEnabled(false);
-                        item_delete.setEnabled(false);
-                        item_edit.setEnabled(true);
+                        item_añadir.setVisible(false);
+                        item_guardar.setVisible(false);
+                        item_delete.setVisible(false);
+                        item_edit.setVisible(true);
+                        item_buscar.setVisible(false);
                         break;
 
                     case 2:
-                        item_añadir.setEnabled(false);
-                        item_guardar.setEnabled(false);
-                        item_edit.setEnabled(false);
-                        item_delete.setEnabled(true);
+                        item_añadir.setVisible(false);
+                        item_guardar.setVisible(false);
+                        item_edit.setVisible(false);
+                        item_delete.setVisible(true);
+                        item_buscar.setVisible(false);
                         break;
 
                     case 3:
 
-                        item_añadir.setEnabled(false);
-                        item_guardar.setEnabled(false);
-                        item_edit.setEnabled(false);
-                        item_delete.setEnabled(false);
+                        item_añadir.setVisible(false);
+                        item_guardar.setVisible(false);
+                        item_edit.setVisible(false);
+                        item_delete.setVisible(false);
+                        item_buscar.setVisible(true);
 
                         break;
                 }
@@ -163,16 +172,26 @@ public class AdministracionBorreActivity extends AppCompatActivity {
 
 
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.menu_administracion_borre, menu);
+       getMenuInflater().inflate(R.menu.menu_administracion_borre, menu);
 
-        item_guardar = menu.findItem(R.id.itemSave).setEnabled(false);
-        item_edit = menu.findItem(R.id.itemEdit).setEnabled(false);
-        item_delete = menu.findItem(R.id.itemDelete).setEnabled(false);
-        item_añadir = menu.findItem(R.id.itemAñadir).setEnabled(true);
+        item_buscar = menu.findItem( R.id.itemSearch).setVisible(false);
+        SearchView searchView = (SearchView) item_buscar.getActionView();
 
+        ((EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setHint("Marcaje del borrego");
+        ((EditText)searchView.findViewById(android.support.v7.appcompat.R.id.search_src_text)).setHintTextColor(Color.WHITE);
+
+
+
+        item_guardar = menu.findItem(R.id.itemSave).setVisible(false);
+        item_edit = menu.findItem(R.id.itemEdit).setVisible(false);
+        item_delete = menu.findItem(R.id.itemDelete).setVisible(false);
+        item_añadir = menu.findItem(R.id.itemAñadir).setVisible(true);
+
+        searchView.setOnQueryTextListener(this);
 
 
         return true;
@@ -201,11 +220,10 @@ public class AdministracionBorreActivity extends AppCompatActivity {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
 
-                                item_añadir.setVisible(true);
-                                RegistroBorreFragment.registrarBorregos();
+                                registro.registrarBorregos();
                                 Toast.makeText(getApplicationContext(),"Datos Guardados",Toast.LENGTH_LONG).show();
-                                RegistroBorreFragment.bloqueo();
-                                item_guardar.setEnabled(false);
+                                registro.bloqueo();
+                                item_guardar.setVisible(false);
 
                             }
                         });
@@ -240,15 +258,58 @@ public class AdministracionBorreActivity extends AppCompatActivity {
                 break;
 
             case R.id.itemAñadir:
-                RegistroBorreFragment.desbloqueo();
-                item_añadir.setVisible(false);
-                item_guardar.setEnabled(true);
+                registro.desbloqueo();
+                item_guardar.setVisible(true);
 
                 break;
         }
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+
+        cursor = bdManager.selectBorrego(query);
+
+        if (cursor.moveToNext()){
+
+            int numero = cursor.getInt(cursor.getColumnIndex("id_borrego"));
+            String fecha = cursor.getString(cursor.getColumnIndex("fecha_registro"));
+
+            String marca = cursor.getString(cursor.getColumnIndex("marcaje"));
+            String name = cursor.getString(cursor.getColumnIndex("nombre"));
+            String sexo = cursor.getString(cursor.getColumnIndex("sexo"));
+            double peso = cursor.getDouble(cursor.getColumnIndex("peso"));
+            String raza = cursor.getString(cursor.getColumnIndex("tipo_raza"));
+            String etapa = cursor.getString(cursor.getColumnIndex("tipo_etapa"));
+            String salida = cursor.getString(cursor.getColumnIndex("tipo_salida"));
+            String descri = cursor.getString(cursor.getColumnIndex("descripcion"));
+
+            ConsultaBorreFragment.textView_fecha.setText(fecha);
+
+            ConsultaBorreFragment.textView_descr.setText(descri);
+            ConsultaBorreFragment.textView_estatus.setText(salida);
+            ConsultaBorreFragment.textView_raz.setText(raza);
+            ConsultaBorreFragment.textView_sex.setText(sexo);
+            ConsultaBorreFragment.textView_name.setText(name);
+            ConsultaBorreFragment.textView_marca.setText(marca);
+            ConsultaBorreFragment.textView_id_borre.setText(String.valueOf(numero));
+            ConsultaBorreFragment.textView_etapa.setText(etapa);
+            ConsultaBorreFragment.textView_pes.setText(String.valueOf(peso));
+
+        }
+
+
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
+    }
+
+
 
     /**
      * A placeholder fragment containing a simple view.

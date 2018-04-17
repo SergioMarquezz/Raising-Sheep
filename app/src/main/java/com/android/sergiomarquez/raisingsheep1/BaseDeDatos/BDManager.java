@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.AdapterView;
 
 
 //Clase para sentencias SQLite
@@ -50,6 +51,7 @@ public class BDManager {
 
     public static final String column_id_borrego = "id_borrego";
     public static final String column_nombre_borre = "nombre";
+    public static final String column_marcaje = "marcaje";
     public static final String column_sexo = "sexo";
     public static final String column_fecha = "fecha_registro";
     public static final String column_descripcion = "descripcion";
@@ -108,7 +110,8 @@ public class BDManager {
     //TABLA DE RAZAS
 
     public static final String create_table_razas = " create table " + name_table_razas + " ("
-            +column_id_raza + " integer primary key autoincrement,"
+            +column_id_raza + " integer" +
+            " primary key autoincrement,"
             +column_tipo_raza + " varchar(15) not null);";
 
     //TABLA ETAPAS
@@ -149,7 +152,8 @@ public class BDManager {
 
     public static final String create_table_borregos = " create table " + name_table_borregos + " ("
             +column_id_borrego + " integer primary key autoincrement,"
-            +column_nombre_borre + " varchar(20) not null,"
+            +column_marcaje + " varchar(6),"
+            +column_nombre_borre + " varchar(20),"
             +column_sexo + " varchar(8) not null,"
             +column_peso + " double (10) not null,"
             +column_fecha + " varchar not null,"
@@ -241,7 +245,7 @@ public class BDManager {
 
     }
 
-    private ContentValues generarBorregos(String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa,int salida){
+    private ContentValues generarBorregos(String marcaje, String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa,int salida){
 
         ContentValues borregos = new ContentValues();
 
@@ -253,6 +257,7 @@ public class BDManager {
         borregos.put(column_raza_idf,raza);
         borregos.put(column_etapa_idf,etapa);
         borregos.put(column_salida_idf,salida);
+        borregos.put(column_marcaje,marcaje);
 
         return borregos;
     }
@@ -264,9 +269,9 @@ public class BDManager {
 
     }
 
-    public void insertarBorregos(String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa, int salida ){
+    public void insertarBorregos(String marcaje, String fecha, String nombre, String sexo, double peso, String descrip, int raza, int etapa, int salida ){
 
-        base_datos.insert(name_table_borregos,null,generarBorregos(fecha,nombre,sexo,peso,descrip,raza,etapa,salida));
+        base_datos.insert(name_table_borregos,null,generarBorregos(marcaje,fecha,nombre,sexo,peso,descrip,raza,etapa,salida));
     }
 
     //Metodo para editar a los usuarios
@@ -339,11 +344,46 @@ public class BDManager {
         return cursor;
     }
 
-    public Cursor selectTodosBorregos(){
+    public Cursor selectTodosBorregos(String marcaje){
 
         leerBaseDatos();
 
         cursor = base_datos.rawQuery("Select *from borregos",null);
+
+        return cursor;
+    }
+
+    public Cursor selectBorrego(String marcaje){
+
+        leerBaseDatos();
+
+        String raw_query = "Select id_borrego,fecha_registro, marcaje, nombre, sexo, peso, tipo_raza, tipo_etapa, tipo_salida, descripcion from borregos\n" +
+                "left join razas on razas.id_raza = borregos.id_raza\n" +
+                "left join etapas on etapas.id_etapa = borregos.id_etapa\n" +
+                "left join salidas on salidas.id_salida = borregos.id_salida\n"+
+                "where borregos.marcaje = ?";
+
+
+        cursor = base_datos.rawQuery(raw_query, new String[]{String.valueOf(marcaje)});
+
+
+        return cursor;
+    }
+
+    public Cursor enfermedades(int id_enfermedad){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select nombre from sintomas where id_enfermedad = ?",new String[]{String.valueOf(id_enfermedad)});
+
+        return cursor;
+    }
+
+    public Cursor diversosSintomas(){
+
+        leerBaseDatos();
+
+        cursor = base_datos.rawQuery("Select *from diversos_sintomas",null);
 
         return cursor;
     }

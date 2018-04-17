@@ -14,6 +14,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -34,8 +35,10 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
     private static EditText nombre;
     private static EditText peso;
     private static EditText descripcion;
+    private static EditText marcaje;
     private static Spinner etapa,raza,sexo,salida;
     private Cursor cursor;
+    private FrameLayout frame;
 
 
     private com.android.sergiomarquez.raisingsheep1.Dialog dialogos;
@@ -50,8 +53,7 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
 
            inicializacion();
            spinners();
-           bloqueo();
-
+            bloqueo();
         return vista;
 
 
@@ -81,7 +83,11 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         nombre = (EditText) vista.findViewById(R.id.editTextName);
         descripcion = (EditText) vista.findViewById(R.id.editTextDescri);
         peso = (EditText) vista.findViewById(R.id.editTextPeso);
+        marcaje = (EditText) vista.findViewById(R.id.editTextMarcaje);
         descripcion.setOnClickListener(this);
+
+        frame = (FrameLayout) vista.findViewById(R.id.frameRegistro);
+        frame.setEnabled(false);
 
         dialogos = new com.android.sergiomarquez.raisingsheep1.Dialog(getContext());
         bd_manager = new BDManager(getContext());
@@ -92,7 +98,7 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
 
     //METODO PARA BLOQUEAR AL INICIO DE LA ACTIVITY TODOS LOS WIDGETS
 
-    public static void bloqueo(){
+    public void bloqueo(){
 
         date.setEnabled(false);
         nombre.setEnabled(false);
@@ -102,13 +108,14 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         raza.setEnabled(false);
         sexo.setEnabled(false);
         salida.setEnabled(false);
+        marcaje.setEnabled(false);
 
 
     }
 
     //METODO PARA DESBLOQUEAR TODOS LOS WIDGETS
 
-    public static void desbloqueo(){
+    public void desbloqueo(){
 
         date.setEnabled(true);
         nombre.setEnabled(true);
@@ -118,7 +125,7 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         raza.setEnabled(true);
         sexo.setEnabled(true);
         salida.setEnabled(true);
-
+        marcaje.setEnabled(true);
 
     }
 
@@ -181,7 +188,7 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
 
     }
 
-    public static void registrarBorregos(){
+    public void registrarBorregos(){
 
         bd_manager.abrirBaseDatos();
 
@@ -193,9 +200,10 @@ public class RegistroBorreFragment extends Fragment implements View.OnClickListe
         int razas = Integer.parseInt(String.valueOf(raza.getSelectedItemPosition()));
         int salidas = Integer.parseInt(String.valueOf(salida.getSelectedItemPosition()));
         String sex = String.valueOf(sexo.getSelectedItem().toString());
+        String marca = String.valueOf(marcaje.getText().toString()).trim();
 
 
-        bd_manager.insertarBorregos(fecha,nombre_borre,sex,pesaje,descrip,razas,etapas,salidas);
+        bd_manager.insertarBorregos(marca,fecha,nombre_borre,sex,pesaje,descrip,razas,etapas,salidas);
 
         bd_manager.cerrarBaseDatos();
     }
