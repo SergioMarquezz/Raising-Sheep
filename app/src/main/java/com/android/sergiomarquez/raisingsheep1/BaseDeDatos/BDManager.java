@@ -388,5 +388,19 @@ public class BDManager {
         return cursor;
     }
 
+    public Cursor enfermedadesSintomas(String tipo_sintoma){
+
+        String rawQuery = "Select nombre, tipo_enfermedad, tipo_sintoma from sintomas\n" +
+                "inner join enfermedades on enfermedades.id_enfermedad = sintomas.id_enfermedad\n" +
+                "inner join detalle_diversos_sintomas on detalle_diversos_sintomas.id_sintoma = sintomas.id_sintoma\n" +
+                "inner join diversos_sintomas on diversos_sintomas.id_diverso_sintoma = detalle_diversos_sintomas.id_diverso_sintoma\n" +
+                "where detalle_diversos_sintomas.id_diverso_sintoma = ?";
+
+        cursor = base_datos.rawQuery(rawQuery,new String[]{String.valueOf(tipo_sintoma)});
+
+
+        return cursor;
+    }
+
 
 }

@@ -88,6 +88,13 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
         else {
 
             selectItems.add(selectItem);
+
+            cursor = bdManager.enfermedadesSintomas(selectItem);
+
+            if (cursor.moveToNext()){
+                String nombre = cursor.getString(cursor.getColumnIndex("tipo_sintoma"));
+                Toast.makeText(getContext(),"Selecionasten\n"+nombre,Toast.LENGTH_LONG).show();
+            }
         }
     }
 

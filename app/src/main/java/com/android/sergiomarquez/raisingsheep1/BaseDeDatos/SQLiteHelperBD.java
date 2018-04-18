@@ -36,6 +36,9 @@ public class SQLiteHelperBD extends SQLiteOpenHelper {
         db.execSQL(BDManager.create_table_sitomas);
         db.execSQL(BDManager.create_table_detalle_ds);
 
+
+        //SE INSERTAN LOS DATOS DE MANERA MANUAL UTILIZANDO METODOS
+
         insertarRazas(db, "Pelibuey");
         insertarRazas(db, "Dorper");
         insertarRazas(db, "Dorset");
@@ -122,6 +125,77 @@ public class SQLiteHelperBD extends SQLiteOpenHelper {
         insertarSintomas(db, "Toxemia", 2);
         insertarSintomas(db, "Fiebre aftosa", 2);
 
+        insertarDetalleSintoma(db,1,1);
+        insertarDetalleSintoma(db,1,2);
+        insertarDetalleSintoma(db,1,3);
+
+        insertarDetalleSintoma(db,2,4);
+        insertarDetalleSintoma(db,2,5);
+        insertarDetalleSintoma(db,2,6);
+        insertarDetalleSintoma(db,2,7);
+
+        insertarDetalleSintoma(db,3,8);
+        insertarDetalleSintoma(db,3,9);
+        insertarDetalleSintoma(db,3,10);
+
+        insertarDetalleSintoma(db,4,11);
+        insertarDetalleSintoma(db,4,12);
+        insertarDetalleSintoma(db,4,4);
+
+        insertarDetalleSintoma(db,5,13);
+        insertarDetalleSintoma(db,5,4);
+        insertarDetalleSintoma(db,5,14);
+        insertarDetalleSintoma(db,5,15);
+        insertarDetalleSintoma(db,5,16);
+
+        insertarDetalleSintoma(db,6,10);
+        insertarDetalleSintoma(db,6,4);
+        insertarDetalleSintoma(db,6,17);
+        insertarDetalleSintoma(db,6,18);
+
+        insertarDetalleSintoma(db,7,19);
+        insertarDetalleSintoma(db,7,20);
+        insertarDetalleSintoma(db,7,10);
+
+        insertarDetalleSintoma(db,8,14);
+        insertarDetalleSintoma(db,8,20);
+        insertarDetalleSintoma(db,8,21);
+        insertarDetalleSintoma(db,8,22);
+        insertarDetalleSintoma(db,8,10);
+
+        insertarDetalleSintoma(db,9,23);
+        insertarDetalleSintoma(db,9,24);
+        insertarDetalleSintoma(db,9,25);
+        insertarDetalleSintoma(db,9,26);
+        insertarDetalleSintoma(db,9,27);
+
+        insertarDetalleSintoma(db,10,23);
+        insertarDetalleSintoma(db,10,24);
+        insertarDetalleSintoma(db,10,28);
+        insertarDetalleSintoma(db,10,29);
+
+        insertarDetalleSintoma(db,11,30);
+        insertarDetalleSintoma(db,11,31);
+        insertarDetalleSintoma(db,11,32);
+
+        insertarDetalleSintoma(db,12,34);
+        insertarDetalleSintoma(db,12,35);
+        insertarDetalleSintoma(db,12,36);
+        insertarDetalleSintoma(db,12,37);
+
+        insertarDetalleSintoma(db,13,39);
+        insertarDetalleSintoma(db,13,40);
+
+        insertarDetalleSintoma(db,14,41);
+        insertarDetalleSintoma(db,14,42);
+        insertarDetalleSintoma(db,14,43);
+
+        insertarDetalleSintoma(db,15,44);
+        insertarDetalleSintoma(db,15,45);
+        insertarDetalleSintoma(db,15,46);
+        insertarDetalleSintoma(db,15,47);
+
+
     }
 
     @Override
@@ -197,6 +271,16 @@ public class SQLiteHelperBD extends SQLiteOpenHelper {
         sintomas.put(BDManager.column_enfermedad_idf,id_enfermedad);
 
         db.insert(BDManager.name_table_sintomas,null,sintomas);
+    }
+
+    public void insertarDetalleSintoma(SQLiteDatabase db, int enfermedad, int sintoma){
+
+        ContentValues detalle_sintoma = new ContentValues();
+
+        detalle_sintoma.put(BDManager.column_sintoma_idf,enfermedad);
+        detalle_sintoma.put(BDManager.column_sin_diverso_idf,sintoma);
+
+        db.insert(BDManager.name_table_detalle_diversos_sin,null,detalle_sintoma);
     }
 
 
