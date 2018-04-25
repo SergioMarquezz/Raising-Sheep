@@ -25,6 +25,7 @@ public class SplashInicioActivity extends AppCompatActivity{
         actionBar = getSupportActionBar();
         actionBar.hide();
 
+
         logo = (ImageView) findViewById(R.id.imageViewLogo);
 
         Animation myanimation = AnimationUtils.loadAnimation(this, R.anim.mytransitions);

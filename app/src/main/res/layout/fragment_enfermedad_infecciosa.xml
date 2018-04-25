@@ -10,7 +10,7 @@
     <ListView
         android:id="@+id/listViewInfeciosa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="wrap_content" >
 
 
     </ListView>
@@ -26,6 +26,14 @@
         android:layout_gravity="center"
         android:text="2" />
 
+    <Button
+        android:id="@+id/buttonMasIfeccion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mas enfermedades"
+        android:layout_marginTop="2in"
+        android:textAllCaps="false"
+        android:layout_marginLeft="1in"/>
 
 
 </FrameLayout>

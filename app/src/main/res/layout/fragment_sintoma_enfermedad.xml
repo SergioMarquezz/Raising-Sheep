@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SintomaEnfermedadFragment"
+    android:id="@+id/fragmentSintomasEnfermedad"
+    android:background="@drawable/backgroud">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textViewSintomas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sintomas elejidos"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="20dp"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_marginLeft="100dp"/>
+
+        <TextView
+            android:id="@+id/textViewEnfermedad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Diarrea"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="100dp"/>
+
+        <TextView
+            android:id="@+id/textViewEnfermedades"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Enfermedades"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginLeft="100dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="30dp">
+
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4"
+                    android:layout_gravity="center_vertical"
+                    android:textSize="18dp"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="30dp"
+                    android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tipo"
+                android:layout_gravity="center_vertical"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_marginLeft="1in"/>
+
+
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listViewEnfermedad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"/>
+
+
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/buttonconsulta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="consulta"/>
+
+</FrameLayout>

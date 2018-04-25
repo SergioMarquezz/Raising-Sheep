@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.widget.AdapterView;
 
 
@@ -262,6 +263,19 @@ public class BDManager {
         return borregos;
     }
 
+    private ContentValues editarBorregos(double peso,String etapa, String estatus, String descripcion){
+
+        ContentValues editar_borre = new ContentValues();
+
+        editar_borre.put(column_peso,peso);
+        editar_borre.put(column_tipo_etapa,etapa);
+        editar_borre.put(column_tipo_salida,estatus);
+        editar_borre.put(column_descripcion,descripcion);
+
+        return editar_borre;
+
+    }
+
     //Metodo para insertar a los usuarios
     public void insertarUsuarios(String nombre, String password, byte[] image) {
 
@@ -388,18 +402,36 @@ public class BDManager {
         return cursor;
     }
 
-    public Cursor enfermedadesSintomas(String tipo_sintoma){
+    public Cursor enfermedadesSintomas(int tipo_sintoma){
 
-        String rawQuery = "Select nombre, tipo_enfermedad, tipo_sintoma from sintomas\n" +
-                "inner join enfermedades on enfermedades.id_enfermedad = sintomas.id_enfermedad\n" +
-                "inner join detalle_diversos_sintomas on detalle_diversos_sintomas.id_sintoma = sintomas.id_sintoma\n" +
-                "inner join diversos_sintomas on diversos_sintomas.id_diverso_sintoma = detalle_diversos_sintomas.id_diverso_sintoma\n" +
-                "where detalle_diversos_sintomas.id_diverso_sintoma = ?";
+        try {
 
-        cursor = base_datos.rawQuery(rawQuery,new String[]{String.valueOf(tipo_sintoma)});
+            String rawQuery = "Select nombre, tipo_enfermedad, tipo_sintoma from sintomas\n" +
+                    "left join enfermedades on enfermedades.id_enfermedad = sintomas.id_enfermedad\n" +
+                    "left join detalle_diversos_sintomas on detalle_diversos_sintomas.id_sintoma = sintomas.id_sintoma\n" +
+                    "left join diversos_sintomas on diversos_sintomas.id_diverso_sintoma = detalle_diversos_sintomas.id_diverso_sintoma\n" +
+                    "where diversos_sintomas.id_diverso_sintoma = ?";
 
+            //Log.w("rawQuery",rawQuery);
+            Log.w("rawQuery", String.valueOf(tipo_sintoma));
+            cursor = base_datos.rawQuery(rawQuery,new String[]{String.valueOf(tipo_sintoma)});
+
+
+
+
+        }catch(Exception e){
+
+            Log.w("rawQuery",e.getMessage());
+
+        }
 
         return cursor;
+    }
+
+    public void editarBorregos(double peso,String etapa, String estatus, String descripcion, String marcaje){
+
+        base_datos.update(name_table_borregos,editarBorregos(peso,etapa,estatus,descripcion),column_marcaje + "=?",new String[]{marcaje});
+
     }
 
 

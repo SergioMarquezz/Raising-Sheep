@@ -1,15 +1,23 @@
 package com.android.sergiomarquez.raisingsheep1;
 
 
+import android.app.Activity;
+import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +35,9 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
     BDManager bdManager;
     ArrayList<String> selectItems = new ArrayList<>();
     ListView listView_sintomas;
+    Bundle  bundle;
+    Dialog dialogo;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -35,13 +46,7 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
         vista = inflater.inflate(R.layout.fragment_sintomas, container, false);
 
         inicio();
-
-
-        //String[] items = {"Sintoma 1","Sintoma 2","Sintoma 3","Sintoma 4", "Sintoma 5","Sintoma 6"};
-        //ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.item_check,R.id.checkboxItem,items);
-        //listView_sintomas.setAdapter(adapter);
-
-    llenarListView();
+        llenarListView();
 
 
         return vista;
@@ -54,6 +59,8 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
         listView_sintomas.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         listView_sintomas.setOnItemClickListener(this);
         bdManager = new BDManager(getContext());
+        dialogo = new Dialog(getContext());
+
 
     }
 
@@ -70,7 +77,6 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
             ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),R.layout.item_check,R.id.checkboxItem,items);
             listView_sintomas.setAdapter(adapter);
 
-
         }
     }
 
@@ -78,43 +84,74 @@ public class SintomasFragment extends Fragment implements AdapterView.OnItemClic
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        String selectItem = ((TextView)view).getText().toString();
+        String item = ((TextView)view).getText().toString();
 
-        if (selectItems.contains(selectItem)){
+        if (selectItems.contains(item)){
 
-            selectItems.remove(selectItem);
+            selectItems.remove(item);
         }
-
         else {
 
-            selectItems.add(selectItem);
+            selectItems.add(item);
 
-            cursor = bdManager.enfermedadesSintomas(selectItem);
 
-            if (cursor.moveToNext()){
-                String nombre = cursor.getString(cursor.getColumnIndex("tipo_sintoma"));
-                Toast.makeText(getContext(),"Selecionasten\n"+nombre,Toast.LENGTH_LONG).show();
-            }
         }
+
     }
 
-    public void showSelectItem(View view){
+    public void showSelectedItems(){
 
         String items = "";
 
         for (String item:selectItems){
 
-            items+="-"+item+"\n";
+            items+=""+item+"\n";
         }
+       // Toast.makeText(getContext(),"Selecionaste"+items,Toast.LENGTH_LONG).show();
+        // bundle = new Bundle();
+        // bundle.putString("texto",items);
 
-        Toast.makeText(getContext(),"Selecionasten\n"+items,Toast.LENGTH_LONG).show();
     }
+
+
 
     @Override
     public void onClick(View v) {
 
         if (v.getId()==R.id.buttonListView){
-            showSelectItem(v);
+
+
+            if (listView_sintomas.getCheckedItemCount() > 5){
+
+
+                dialogo.OnCreateDialog("Seleccionar solo 5 sintomas").show();
+
+            }
+            else {
+
+                if (listView_sintomas.getCheckedItemCount()!= 0){
+
+                    showSelectedItems();
+
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    android.support.v4.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                    SintomaEnfermedadFragment sintomaEnfermedadFragment = new SintomaEnfermedadFragment();
+                   // sintomaEnfermedadFragment.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.containerPrincipal,sintomaEnfermedadFragment);
+                    fragmentTransaction.addToBackStack(null).commit();
+
+                }
+
+                else{
+
+                    dialogo.OnCreateDialog("Seleccione los sintomas").show();
+                }
+
+            }
+
         }
     }
+
+
 }

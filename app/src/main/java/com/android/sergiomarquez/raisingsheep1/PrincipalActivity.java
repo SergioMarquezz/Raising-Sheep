@@ -99,6 +99,7 @@ public class PrincipalActivity extends AppCompatActivity
         }
     }
 
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -161,10 +162,8 @@ public class PrincipalActivity extends AppCompatActivity
             if (fragment!= null){
 
                 fragmentManager.beginTransaction().remove(fragment).commit();
-                image_view_bienvenido.setImageResource(R.drawable.raising_sheep);
-                text_view_bienvenido.setVisibility(View.VISIBLE);
-                findViewById(R.id.containerPrincipal).setBackgroundResource(R.drawable.backgroud);
-                toolbar.setTitle(R.string.app_name);
+               // recuperarFondo();
+
             }
 
             Intent activity_administraccion = new Intent(getApplicationContext(),AdministracionBorreActivity.class);
@@ -173,18 +172,19 @@ public class PrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.itemSintomas) {
 
-                toolbar.setTitle(R.string.app_name);
+
+                //recuperarFondo();
                 fragment = new SintomasFragment();
 
-                fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
+                fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").addToBackStack(null).commit();
 
 
         } else if (id == R.id.itemEnfermedad) {
 
-                toolbar.setTitle(R.string.app_name);
+                //recuperarFondo();
                 fragment = new EnfermedadesFragment();
 
-                fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
+                fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").addToBackStack(null).commit();
         /*
         } else if (id == R.id.nav_manage) {
 
@@ -203,16 +203,25 @@ public class PrincipalActivity extends AppCompatActivity
             fragment = new CambioPerfilFragment();
             fragment.setArguments(args);
 
-            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
-            image_view_bienvenido.setImageDrawable(null);
-            text_view_bienvenido.setVisibility(View.INVISIBLE);
-            findViewById(R.id.containerPrincipal).setBackgroundColor(Color.WHITE);
+            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").addToBackStack(null).commit();
+           // image_view_bienvenido.setImageDrawable(null);
+           // text_view_bienvenido.setVisibility(View.INVISIBLE);
+           // findViewById(R.id.containerPrincipal).setBackgroundColor(Color.WHITE);
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void recuperarFondo(){
+
+        image_view_bienvenido.setImageResource(R.drawable.raising_sheep);
+        text_view_bienvenido.setVisibility(View.VISIBLE);
+        findViewById(R.id.containerPrincipal).setBackgroundResource(R.drawable.backgroud);
+        toolbar.setTitle(R.string.app_name);
+
     }
 
 

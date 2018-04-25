@@ -6,6 +6,12 @@
     tools:context=".SintomasFragment"
     android:background="@drawable/backgroud">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:orientation="vertical">
+
         <ListView
             android:id="@+id/listViewCheck"
             android:layout_width="match_parent"
@@ -13,11 +19,30 @@
 
         </ListView>
 
-    <Button
-        android:id="@+id/buttonListView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="show select item"/>
+
+    </LinearLayout>
+
+
+  <LinearLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:layout_gravity="center"
+      android:layout_marginTop="150dp">
+
+      <Button
+          android:id="@+id/buttonListView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAllCaps="false"
+          android:backgroundTint="@color/colorGrey"
+          android:background="@drawable/edit_text_ovalo_white"
+          android:text="Mostrar enfermedades"/>
+
+  </LinearLayout>
+
+
+
 
 
 

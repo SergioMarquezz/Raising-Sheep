@@ -85,7 +85,7 @@ public class AdministracionBorreActivity extends AppCompatActivity implements Se
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
 
-        //tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setupWithViewPager(mViewPager);
 
 
         inicio();
@@ -241,6 +241,8 @@ public class AdministracionBorreActivity extends AppCompatActivity implements Se
                 break;
 
             case R.id.itemEdit:
+
+                EdicionBorreFragment.editarBorrego();
                 Toast.makeText(getApplicationContext(),"Datos Editados",Toast.LENGTH_LONG).show();
 
                 break;

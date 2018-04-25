@@ -49,7 +49,7 @@ public class EnfermedadesFragment extends Fragment implements View.OnClickListen
 
             fragment = new EnfermedadParasitoriaFragment();
 
-            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
+            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").addToBackStack(null).commit();
 
         }
 
@@ -57,7 +57,7 @@ public class EnfermedadesFragment extends Fragment implements View.OnClickListen
 
             fragment = new EnfermedadInfecciosaFragment();
 
-            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").commit();
+            fragmentManager.beginTransaction().replace(R.id.containerPrincipal,fragment,"fragments").addToBackStack(null).commit();
         }
     }
 }
